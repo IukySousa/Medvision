@@ -258,3 +258,47 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   goTo(0);
   startAutoplay();
 });
+
+// Vídeo do fluxo (seção Tecnologia): efeito suave ligado à rolagem + play/pause automático.
+// --flow-p (0 a 1) é suavizado com interpolação (lerp) para o movimento não ficar "travado" na roda do mouse.
+document.querySelectorAll('[data-flow]').forEach((frame) => {
+  const video = frame.querySelector('video');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current = reduceMotion ? 1 : 0;
+  let target = current;
+  let ticking = false;
+
+  // Progresso: 0 quando o topo do vídeo entra pela base da tela; 1 quando ele chega a ~35% da altura.
+  const measure = () => {
+    const rect = frame.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const start = vh;
+    const end = vh * 0.35;
+    target = reduceMotion ? 1 : Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+  };
+
+  const render = () => {
+    current += (target - current) * 0.12;
+    if (Math.abs(target - current) < 0.001) current = target;
+    frame.style.setProperty('--flow-p', current.toFixed(3));
+    if (current !== target) requestAnimationFrame(render); else ticking = false;
+  };
+
+  const onScroll = () => {
+    measure();
+    if (!ticking) { ticking = true; requestAnimationFrame(render); }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  // Toca só quando o vídeo está visível (economiza bateria/dados); pausa ao sair.
+  if (video && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !document.hidden) video.play().catch(() => {});
+      else video.pause();
+    }, { threshold: 0.25 }).observe(video);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
+  }
+});

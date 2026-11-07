@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Mesma fonte, favicon e folha de estilos da landing page para manter a identidade. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="med_vision.ico" sizes="any">
+  <meta name="description" content="Conheça a equipe, os objetivos, a missão, a visão e os valores da MedVision, pioneira em realidade mista e inteligência artificial para a saúde.">
+  <title>Sobre Nós — MedVision Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="about-page">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <!-- Cabeçalho igual ao da página principal, em barra escura. -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Navegação principal">
+      <a class="brand brand-logo" href="index.html" aria-label="MedVision, início"><img src="Imagens/medvision-logo-transparent.png" alt="MedVision"></a>
+      <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false"><span>Menu</span><i aria-hidden="true"></i></button>
+      <div class="nav-panel" id="menu">
+        <a href="index.html#produto">Produto</a><a href="index.html#tecnologia">Tecnologia</a><a href="index.html#equipes">Para equipes</a><a href="index.html#faq">Dúvidas</a><a href="sobre.html" aria-current="page">Sobre Nós</a>
+        <a class="nav-cta" href="contato.html">Falar com especialista <span>↗</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="conteudo" class="sobre-layout">
+    <!-- Painel esquerdo: foto da equipe com chamada. Fica fixo enquanto o texto rola. -->
+    <section class="sobre-visual" aria-labelledby="sobre-title">
+      <video autoplay muted loop playsinline preload="auto" poster="Imagens/equipe-medvision-poster.jpg" aria-label="Equipe MedVision de jaleco branco em uma sala de servidores, colocando os óculos MedVision Pro"><source src="Imagens/equipe-medvision.mp4" type="video/mp4"></video>
+      <div class="sobre-visual-copy">
+        <p class="eyebrow">MEDVISION PRO</p>
+        <h1 id="sobre-title">Nossa equipe te convida a ter uma visão clínica para o futuro</h1>
+      </div>
+      <p class="sobre-visual-note">Entre em <a href="contato.html">contato conosco</a> e saiba mais sobre o conceito que oferecemos para aprimorar sua rotina médica.</p>
+    </section>
+    <!-- Painel direito: texto institucional. -->
+    <section class="sobre-content">
+      <div class="sobre-text">
+        <article><h2>Quem somos</h2><p>Somos uma empresa pioneira no desenvolvimento de soluções de realidade mista e inteligência artificial aplicadas à área da saúde, focada em aprimorar os fluxos de trabalho médicos e otimizar os resultados clínicos.</p></article>
+        <article><h2>Objetivos</h2><p>Desenvolver a plataforma MedVision Pro para integrar dados cirúrgicos e de diagnóstico em tempo real à visualização dos profissionais, facilitando o treinamento médico avançado e a colaboração remota entre especialistas.</p>
+          <ul><li>Aumentar a precisão de procedimentos cirúrgicos.</li><li>Reduzir o tempo de treinamento para novos residentes.</li><li>Otimizar a eficiência de equipes médicas.</li><li>Melhorar a colaboração entre instituições de saúde.</li></ul></article>
+        <article><h2>Missão</h2><p>Capacitar profissionais de saúde com tecnologias inovadoras de realidade mista para oferecer diagnósticos mais precisos e tratamentos mais eficazes, salvando vidas.</p></article>
+        <article><h2>Visão</h2><p>Ser líder global em soluções de realidade mista para a saúde, reconhecido pela inovação constante e pelo impacto positivo no cuidado ao paciente.</p></article>
+        <article><h2>Valores</h2><p>Inovação centrada no paciente, ética inabalável na pesquisa e desenvolvimento, qualidade excepcional em todos os produtos e uma cultura de colaboração transparente e respeitosa.</p></article>
+        <a class="button button-primary" href="contato.html">Falar com um especialista <span>→</span></a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container footer-grid"><a class="brand brand-logo" href="index.html" aria-label="MedVision, início"><img src="Imagens/medvision-logo-transparent.png" alt="MedVision"></a><p>Tecnologia para apoiar equipes de saúde no momento que importa.</p><div><a href="index.html#produto">Produto</a><a href="index.html#tecnologia">Tecnologia</a><a href="index.html#faq">Dúvidas</a><a href="sobre.html">Sobre Nós</a></div><p class="copyright">© 2026 MedVision Health Technologies.<br>Todos os direitos reservados.</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -90,3 +90,66 @@
 /* 6. Link "voltar" recua um pouco no hover */
 .back-link { display:inline-block; transition:transform .3s cubic-bezier(.2,.7,.2,1), color .2s; }
 .back-link:hover { transform:translateX(-5px); }
+
+/* ===== Fluxo MedVision (vídeo na seção Tecnologia) =====
+   --flow-p vai de 0 a 1 conforme a rolagem (definido em script.js).
+   Efeito: o vídeo começa menor, translúcido e com cantos bem arredondados, e "abre" até o tamanho final. */
+.flow-card { grid-column:1 / -1; display:flex; flex-direction:column; align-items:center; gap:clamp(40px,6vw,72px); padding:clamp(88px,10vw,150px) 0 clamp(72px,9vw,130px); color:#f6fbff; text-align:center; background:radial-gradient(120% 80% at 50% 0%,#0d202d 0%,var(--black) 62%); overflow:hidden; }
+.flow-copy { width:min(760px,calc(100% - 48px)); }
+.flow-copy .eyebrow { color:#a7d5f6; }
+.flow-copy h2 { margin:14px 0 18px; font-size:clamp(2.8rem,5vw,5rem); }
+.flow-copy>p:not(.eyebrow) { max-width:480px; margin:0 auto; opacity:.72; font-size:.98rem; }
+.flow-frame { --flow-p:1; width:min(1160px,calc(100% - 48px)); aspect-ratio:16/9; overflow:hidden; background:#0a0d11; border:1px solid rgba(167,213,246,.18); border-radius:calc(44px - 24px * var(--flow-p)); box-shadow:0 calc(20px + 50px * var(--flow-p)) calc(40px + 60px * var(--flow-p)) -30px rgba(49,104,143,.55); opacity:calc(.35 + .65 * var(--flow-p)); transform:scale(calc(.86 + .14 * var(--flow-p))); transform-origin:center top; will-change:transform,opacity; }
+.flow-video { width:100%; height:100%; object-fit:cover; transform:scale(calc(1.12 - .12 * var(--flow-p))); }
+@media (max-width:720px) { .flow-frame { width:calc(100% - 32px); border-radius:calc(28px - 14px * var(--flow-p)); } }
+@media (prefers-reduced-motion:reduce) { .flow-frame { --flow-p:1; } }
+
+/* Imagem de conceito exibida inteira, sem corte */
+.take-grid .take-full img { aspect-ratio:auto; height:auto; object-fit:contain; }
+
+/* Página "Sobre Nós" (sobre.html): painel de foto fixo à esquerda, texto institucional à direita. */
+.about-page .site-header { position:relative; background:#05080c; }
+.nav-panel a[aria-current='page'] { opacity:1!important; border-bottom:1px solid var(--blue); }
+.sobre-layout { display:grid; grid-template-columns:minmax(340px,.82fr) 1.18fr; align-items:start; background:#fff; }
+.sobre-visual { position:sticky; top:0; height:100vh; min-height:560px; overflow:hidden; background:#0d202d; color:#fff; }
+.sobre-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center bottom; }
+.sobre-visual::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(3,12,20,.72) 0%,rgba(3,12,20,.25) 38%,transparent 55%,rgba(3,12,20,.78) 100%); }
+.sobre-visual-copy { position:absolute; z-index:1; top:clamp(28px,6vh,64px); left:clamp(24px,4vw,56px); right:clamp(24px,4vw,56px); }
+.sobre-visual-copy .eyebrow { color:#bfe1f7; margin-bottom:14px; }
+.sobre-visual h1 { max-width:520px; font-size:clamp(2.1rem,3.6vw,3.5rem); line-height:1.04; letter-spacing:-.055em; text-shadow:0 2px 18px rgba(2,10,18,.5); }
+.sobre-visual-note { position:absolute; z-index:1; left:clamp(24px,4vw,56px); right:clamp(24px,4vw,56px); bottom:clamp(22px,4vh,40px); max-width:460px; font-size:.9rem; font-style:italic; color:rgba(255,255,255,.92); }
+.sobre-visual-note a { text-decoration:underline; text-underline-offset:3px; }
+.sobre-content { padding:clamp(56px,8vw,120px) clamp(28px,6vw,104px); background:#fff; }
+.sobre-text { max-width:660px; display:grid; gap:clamp(30px,4vw,46px); }
+.sobre-text h2 { margin-bottom:12px; color:var(--blue-deep); font-size:clamp(1.6rem,2.3vw,2.1rem); line-height:1.05; letter-spacing:-.045em; text-transform:uppercase; }
+.sobre-text p { color:var(--ink); font-size:1.02rem; line-height:1.55; }
+.sobre-text ul { list-style:none; margin-top:18px; border-top:1px solid var(--line); }
+.sobre-text li { position:relative; padding:12px 0 12px 22px; border-bottom:1px solid var(--line); color:var(--muted); font-size:.95rem; }
+.sobre-text li::before { content:''; position:absolute; left:0; top:50%; width:8px; height:8px; margin-top:-4px; border-radius:50%; background:var(--blue); }
+.button-primary { justify-self:start; background:var(--blue-deep); color:#fff; }
+@media (max-width:900px) {
+  .sobre-layout { grid-template-columns:1fr; }
+  .sobre-visual { position:relative; height:auto; min-height:0; aspect-ratio:1/1.05; }
+  .sobre-content { padding:48px 24px 72px; }
+}
+@media (max-width:720px) { .about-page .nav-panel a[aria-current='page'] { border-bottom:0; color:var(--blue-deep); font-weight:600; } }
+/* Ajustes da página Sobre Nós: cabeçalho fixo, foto sem cortar a equipe e lista sem recuo. */
+.about-page .site-header { position:sticky; top:0; z-index:30; }
+.sobre-layout { grid-template-columns:minmax(340px,1fr) 1fr; }
+.sobre-visual { top:62px; height:calc(100vh - 62px); }
+.sobre-visual img { object-position:28% 100%; }
+.sobre-text ul { padding:0; }
+@media (max-width:900px) { .sobre-visual { top:auto; height:auto; } }
+@media (max-width:900px) { .sobre-layout { grid-template-columns:minmax(0,1fr); } .sobre-visual { min-height:520px; } .sobre-visual img { object-position:28% 100%; } }
+@media (max-width:900px) { .sobre-visual { aspect-ratio:auto; width:100%; height:min(135vw,620px); min-height:0; } }
+/* Vídeo da equipe: mantém a cena inteira (16:9) sobre o fundo azul-escuro do painel. */
+.sobre-visual img { display:none; }
+.sobre-visual video { position:absolute; left:0; right:0; bottom:clamp(92px,13vh,130px); width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%); mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%); }
+.sobre-visual::after { background:linear-gradient(180deg,rgba(13,32,45,0) 60%,rgba(13,32,45,.6) 100%); }
+@media (max-width:900px) {
+  .sobre-visual { display:flex; flex-direction:column; justify-content:space-between; gap:22px; height:auto; padding:32px 0 26px; }
+  .sobre-visual-copy,.sobre-visual-note { position:static; }
+  .sobre-visual-copy { padding:0 24px; } .sobre-visual-note { padding:0 24px; }
+  .sobre-visual video { position:static; order:2; }
+  .sobre-visual-note { order:3; }
+}
