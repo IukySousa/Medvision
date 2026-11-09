@@ -1,0 +1,10 @@
+node_modules
+.git
+.wrangler
+dist
+assets
+package.json
+package-lock.json
+wrangler.jsonc
+.assetsignore
+cloudflare.txt
