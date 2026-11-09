@@ -5,6 +5,6 @@ dist
 assets
 package.json
 package-lock.json
+cloudflare.txt
 wrangler.jsonc
 .assetsignore
-cloudflare.txt
