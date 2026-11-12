@@ -8,3 +8,5 @@ package-lock.json
 cloudflare.txt
 wrangler.jsonc
 .assetsignore
+   src
+   migrations
