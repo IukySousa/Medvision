@@ -1,7 +1,17 @@
 {
   "name": "medvision-teste",
+  "main": "src/index.js",
   "compatibility_date": "2026-11-08",
   "assets": {
-    "directory": "./"
-  }
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "medvision-db",
+      "database_id": "baa4b024-28bc-4c90-93b3-6ecdc5c9392a"
+    }
+  ]
 }
